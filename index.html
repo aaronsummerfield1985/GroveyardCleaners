@@ -43,7 +43,7 @@
     <!-- NAVIGATION -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5 top-8">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-2 group cursor-pointer">
+            <div class="flex items-center gap-2 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 <div class="w-10 h-10 bg-sage rounded-xl flex items-center justify-center text-white transition-transform group-hover:rotate-12">
                     <i data-lucide="sparkles"></i>
                 </div>
@@ -54,9 +54,9 @@
                 <a href="#services" class="text-gray-600 hover:text-sage font-semibold transition-colors">Services</a>
                 <a href="#str" class="text-gray-600 hover:text-sage font-semibold transition-colors">STR Turnover</a>
                 <a href="#rates" class="text-gray-600 hover:text-sage font-semibold transition-colors">Rates</a>
-                <button class="bg-sage text-white px-7 py-3 rounded-full font-bold hover:opacity-90 transition-all shadow-lg hover:shadow-xl active:scale-95">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVvHvTBDjGWdyUFcA3KoiDBx0qJ0vhDVdll_5IlxnByK4hDw/viewform?usp=publish-editor" target="_blank" class="bg-sage text-white px-7 py-3 rounded-full font-bold hover:opacity-90 transition-all shadow-lg hover:shadow-xl active:scale-95 text-center">
                     Book Now
-                </button>
+                </a>
             </div>
 
             <button class="md:hidden text-gray-800 p-2" onclick="toggleMenu()">
@@ -69,7 +69,7 @@
             <a href="#services" onclick="toggleMenu()" class="text-xl font-bold text-gray-800 border-b pb-3">Services</a>
             <a href="#str" onclick="toggleMenu()" class="text-xl font-bold text-gray-800 border-b pb-3">STR Turnover</a>
             <a href="#rates" onclick="toggleMenu()" class="text-xl font-bold text-gray-800 border-b pb-3">Rates</a>
-            <button class="bg-sage text-white py-4 rounded-2xl font-bold mt-4 shadow-lg">Book a Cleaning</button>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVvHvTBDjGWdyUFcA3KoiDBx0qJ0vhDVdll_5IlxnByK4hDw/viewform?usp=publish-editor" target="_blank" class="bg-sage text-white py-4 rounded-2xl font-bold mt-4 shadow-lg text-center">Book a Cleaning</a>
         </div>
     </nav>
 
@@ -88,10 +88,10 @@
                     Owned and operated by an active Denver Superhost. We bring elite, hospitality-grade detailing to homes and Airbnbs across the Front Range.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <button class="bg-sage text-white text-lg px-10 py-5 rounded-2xl font-bold shadow-2xl hover:scale-105 transition-transform flex items-center justify-center gap-2 active:scale-95">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVvHvTBDjGWdyUFcA3KoiDBx0qJ0vhDVdll_5IlxnByK4hDw/viewform?usp=publish-editor" target="_blank" class="bg-sage text-white text-lg px-10 py-5 rounded-2xl font-bold shadow-2xl hover:scale-105 transition-transform flex items-center justify-center gap-2 active:scale-95">
                         Get Your Quote <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                    </button>
-                    <a href="#rates" class="bg-white border-2 border-gray-200 text-gray-700 text-lg px-10 py-5 rounded-2xl font-bold hover:bg-gray-50 text-center transition-colors">
+                    </a>
+                    <a href="#services" class="bg-white border-2 border-gray-200 text-gray-700 text-lg px-10 py-5 rounded-2xl font-bold hover:bg-gray-50 text-center transition-colors">
                         View Local Rates
                     </a>
                 </div>
@@ -198,9 +198,9 @@
                             <span class="font-black text-xl text-gray-900">From $215</span>
                         </div>
                     </div>
-                    <button class="w-full mt-10 bg-sage text-white py-5 rounded-2xl font-black text-lg shadow-xl hover:scale-[1.02] active:scale-95 transition-all">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVvHvTBDjGWdyUFcA3KoiDBx0qJ0vhDVdll_5IlxnByK4hDw/viewform?usp=publish-editor" target="_blank" class="w-full mt-10 bg-sage text-white py-5 rounded-2xl font-black text-lg shadow-xl hover:scale-[1.02] active:scale-95 transition-all text-center block">
                         Inquire for Host Support
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -209,7 +209,7 @@
     <!-- RESIDENTIAL SERVICES -->
     <section id="services" class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto text-center mb-20">
-            <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Residential Excellence</h2>
+            <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4" id="rates">Residential Excellence</h2>
             <p class="text-gray-500 text-lg">Hospitality-grade standards for your private home.</p>
         </div>
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
@@ -226,7 +226,7 @@
                     <li class="flex gap-3 items-center"><i data-lucide="check" class="w-5 text-sage"></i> Kitchen Exterior</li>
                     <li class="flex gap-3 items-center"><i data-lucide="check" class="w-5 text-sage"></i> General Dusting</li>
                 </ul>
-                <button class="w-full py-4 bg-gray-200 text-gray-800 rounded-2xl font-bold hover:bg-gray-300 transition-colors">Book Standard</button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVvHvTBDjGWdyUFcA3KoiDBx0qJ0vhDVdll_5IlxnByK4hDw/viewform?usp=publish-editor" target="_blank" class="w-full py-4 bg-gray-200 text-gray-800 rounded-2xl font-bold hover:bg-gray-300 transition-colors text-center block">Book Standard</a>
             </div>
             <!-- Deep -->
             <div class="p-10 rounded-[2.5rem] border-4 border-sage bg-white shadow-[0_30px_60px_rgba(0,0,0,0.1)] scale-105 z-10 relative">
@@ -242,7 +242,7 @@
                     <li class="flex gap-3 items-center"><i data-lucide="check" class="w-5 text-sage"></i> Inside Microwave</li>
                     <li class="flex gap-3 items-center"><i data-lucide="check" class="w-5 text-sage"></i> Ceiling Fans & Vents</li>
                 </ul>
-                <button class="w-full py-4 bg-sage text-white rounded-2xl font-black text-lg shadow-xl hover:opacity-95 transition-opacity">Book Deep Clean</button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVvHvTBDjGWdyUFcA3KoiDBx0qJ0vhDVdll_5IlxnByK4hDw/viewform?usp=publish-editor" target="_blank" class="w-full py-4 bg-sage text-white rounded-2xl font-black text-lg shadow-xl hover:opacity-95 transition-opacity text-center block">Book Deep Clean</a>
             </div>
             <!-- Move In/Out -->
             <div class="p-10 rounded-[2.5rem] border border-gray-100 bg-gray-50 hover:bg-white hover:shadow-2xl transition-all group">
@@ -257,14 +257,14 @@
                     <li class="flex gap-3 items-center"><i data-lucide="check" class="w-5 text-sage"></i> Window Tracks & Vents</li>
                     <li class="flex gap-3 items-center"><i data-lucide="check" class="w-5 text-sage"></i> Full Closet Detail</li>
                 </ul>
-                <button class="w-full py-4 bg-gray-200 text-gray-800 rounded-2xl font-bold hover:bg-gray-300 transition-colors">Book Move-Out</button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVvHvTBDjGWdyUFcA3KoiDBx0qJ0vhDVdll_5IlxnByK4hDw/viewform?usp=publish-editor" target="_blank" class="w-full py-4 bg-gray-200 text-gray-800 rounded-2xl font-bold hover:bg-gray-300 transition-colors text-center block">Book Move-Out</a>
             </div>
         </div>
     </section>
 
     <!-- FOOTER / CONTACT -->
     <section id="contact" class="bg-dark text-white pt-32 pb-16 px-6 rounded-t-[5rem]">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-start">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
             <div>
                 <h2 class="text-5xl font-black mb-8 italic text-sage tracking-tighter">Groveyard <br>Cleaners</h2>
                 <p class="text-gray-400 mb-12 text-lg leading-relaxed max-w-sm">Bringing your space back to life with Superhost standards. We specialize in Northglenn, Denver, and Thornton.</p>
@@ -278,40 +278,21 @@
                             <p class="text-2xl font-bold">(303) 000-0000</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-6 group cursor-pointer">
-                        <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-sage group-hover:bg-sage group-hover:text-white transition-all">
-                            <i data-lucide="mail" class="w-7 h-7"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs font-black uppercase text-gray-500 tracking-widest">Email Us</p>
-                            <p class="text-2xl font-bold">hello@groveyard.com</p>
-                        </div>
-                    </div>
                 </div>
             </div>
             
-            <div class="bg-white p-10 md:p-14 rounded-[4rem] text-gray-900 shadow-[0_50px_100px_rgba(0,0,0,0.3)]">
-                <h3 class="text-2xl font-bold mb-8">Get Your Free Estimate</h3>
-                <form class="space-y-5">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="Name" class="w-full p-4 bg-gray-50 rounded-2xl outline-none focus:ring-2 ring-sage border-none font-medium">
-                        <input type="text" placeholder="Phone" class="w-full p-4 bg-gray-50 rounded-2xl outline-none focus:ring-2 ring-sage border-none font-medium">
-                    </div>
-                    <input type="text" placeholder="Neighborhood (e.g. Northglenn)" class="w-full p-4 bg-gray-50 rounded-2xl outline-none focus:ring-2 ring-sage border-none font-medium">
-                    <select class="w-full p-4 bg-gray-50 rounded-2xl outline-none focus:ring-2 ring-sage border-none font-medium text-gray-500">
-                        <option>Airbnb Turnover</option>
-                        <option>Residential Deep Clean</option>
-                        <option>Standard Maintenance</option>
-                        <option>Move In / Move Out</option>
-                    </select>
-                    <button class="w-full bg-sage text-white py-5 rounded-[2rem] font-black text-xl shadow-2xl hover:opacity-90 active:scale-95 transition-all mt-4">
-                        Send Request
-                    </button>
-                    <p class="text-center text-[10px] text-gray-400 mt-4 px-4 uppercase tracking-tighter">Licensed, Bonded, and Insured for your peace of mind.</p>
-                </form>
+            <div class="bg-white p-10 md:p-14 rounded-[4rem] text-gray-900 shadow-[0_50px_100px_rgba(0,0,0,0.3)] text-center">
+                <h3 class="text-3xl font-black mb-4">Ready for a 5-Star Clean?</h3>
+                <p class="text-gray-500 mb-10 leading-relaxed">Click below to provide your details. I'll review your request and get back to you with a personalized quote today!</p>
+                
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVvHvTBDjGWdyUFcA3KoiDBx0qJ0vhDVdll_5IlxnByK4hDw/viewform?usp=publish-editor" target="_blank" class="w-full bg-sage text-white py-6 rounded-[2.5rem] font-black text-2xl shadow-2xl hover:scale-[1.03] active:scale-95 transition-all flex items-center justify-center gap-3">
+                    Start Your Free Quote <i data-lucide="arrow-right"></i>
+                </a>
+                
+                <p class="text-center text-[10px] text-gray-400 mt-8 uppercase tracking-widest font-bold">Licensed, Bonded, and Insured in Colorado.</p>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto mt-24 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-500 text-sm">
+        <div class="max-w-7xl mx-auto mt-24 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-500 text-sm text-center">
             <p>© 2026 Groveyard Cleaners LLC. Denver's Choice.</p>
             <div class="flex gap-10 font-bold uppercase tracking-widest text-[10px]">
                 <a href="#" class="hover:text-white transition-colors">Privacy</a>
