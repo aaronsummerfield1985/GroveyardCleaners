@@ -1,338 +1,264 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Shield, 
-  Star, 
-  MapPin, 
-  Phone, 
-  CheckCircle, 
-  Calendar, 
-  Clock, 
-  Award, 
-  Sparkles,
-  ChevronRight,
-  Menu, 
-  X,
-  Instagram,
-  Facebook,
-  Quote,
-  Percent,
-  Key,
-  Camera,
-  Medal,
-  Dog,
-  Leaf,
-  Coffee
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groveyard Cleaners | Denver & Northglenn STR Specialists</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .bg-sage { background-color: #5F7161; }
+        .text-sage { color: #5F7161; }
+        .bg-cream { background-color: #FFFBE9; }
+        .bg-sand { background-color: #E7E0C9; }
+        .animate-bounce-slow { animation: bounce 3s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(-5%); } 50% { transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-cream selection:bg-[#6D8B74] selection:text-white">
 
-// --- THEME CONSTANTS ---
-const COLORS = {
-  primary: 'bg-[#5F7161]', // Sage Green
-  primaryText: 'text-[#5F7161]',
-  secondary: 'bg-[#E7E0C9]', // Cream/Sand
-  accent: 'bg-[#6D8B74]', // Leaf Green
-  dark: 'bg-[#191A19]', // Charcoal
-  light: 'bg-[#FFFBE9]'  // Off-white
-};
-
-const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { name: 'Services', href: '#services' },
-    { name: 'STR Turnover', href: '#str' },
-    { name: 'Add-Ons', href: '#addons' },
-    { name: 'Contact', href: '#contact' }
-  ];
-
-  return (
-    <div className={`min-h-screen font-sans selection:bg-[#6D8B74] selection:text-white ${COLORS.light}`}>
-      
-      {/* --- PROMO TOP BAR --- */}
-      <div className={`${COLORS.primary} text-white py-2 px-6 text-center text-sm font-bold tracking-wide`}>
-        <span className="flex items-center justify-center gap-2">
-          <Percent size={14} /> NEW CUSTOMER SPECIAL: $25 OFF YOUR FIRST DEEP CLEAN
+    <!-- PROMO TOP BAR -->
+    <div class="bg-sage text-white py-2 px-6 text-center text-xs md:text-sm font-bold tracking-wide sticky top-0 z-[60]">
+        <span class="flex items-center justify-center gap-2">
+            <i data-lucide="percent" class="w-4 h-4"></i> NEW CUSTOMER SPECIAL: $25 OFF YOUR FIRST DEEP CLEAN
         </span>
-      </div>
+    </div>
 
-      {/* --- NAVIGATION --- */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'} top-9 md:top-8`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className={`w-10 h-10 ${COLORS.primary} rounded-xl flex items-center justify-center text-white`}>
-              <Sparkles size={24} />
-            </div>
-            <span className="text-2xl font-bold tracking-tight text-[#191A19]">Sparkle<span className={COLORS.primaryText}>MileHigh</span></span>
-          </div>
-
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className="text-gray-600 hover:text-[#5F7161] font-medium transition-colors">
-                {link.name}
-              </a>
-            ))}
-            <button className={`${COLORS.primary} text-white px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-all shadow-lg hover:shadow-xl`}>
-              Book Now
-            </button>
-          </div>
-
-          <button className="md:hidden text-gray-800" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-
-        {isMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white border-t md:hidden animate-in fade-in slide-in-from-top-4">
-            <div className="flex flex-col p-6 gap-4">
-              {navLinks.map((link) => (
-                <a key={link.name} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-xl font-medium text-gray-800 border-b pb-2">
-                  {link.name}
-                </a>
-              ))}
-              <button className={`${COLORS.primary} text-white py-4 rounded-xl font-bold mt-4`}>
-                Book a Cleaning
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* --- HERO SECTION --- */}
-      <section className="relative pt-40 pb-20 md:pt-56 md:pb-32 px-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div className="z-10 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 bg-[#E7E0C9] text-[#5F7161] px-4 py-1.5 rounded-full text-sm font-bold mb-6">
-              <MapPin size={16} /> Serving Denver & Northglenn
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-[#191A19] leading-tight mb-6">
-              Spend Your Weekend <br />
-              <span className={COLORS.primaryText}>In The Mountains.</span>
-            </h1>
-            <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
-              Owned by an active Superhost. We handle the scrubbing so you can enjoy the Colorado lifestyle. Elite detailing for homes, Airbnbs, and pet-lovers.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <button className={`${COLORS.primary} text-white text-lg px-8 py-4 rounded-2xl font-bold shadow-xl hover:scale-105 transition-transform flex items-center justify-center gap-2`}>
-                Get Your Quote <ChevronRight size={20} />
-              </button>
-              <button className="bg-white border-2 border-gray-200 text-gray-700 text-lg px-8 py-4 rounded-2xl font-bold hover:bg-gray-50 transition-colors">
-                View STR Packages
-              </button>
-            </div>
-          </div>
-          
-          <div className="relative">
-            <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              <div className={`${COLORS.primary} w-full h-full flex items-center justify-center text-white/20 italic p-12 text-center`}>
-                [Photo Suggestion: A clean, airy Denver living room with a dog happily laying on a vacuumed rug]
-              </div>
-            </div>
-            {/* Superhost Floater */}
-            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-2xl border border-gray-50 flex items-center gap-4 max-w-xs">
-              <div className="bg-red-50 p-3 rounded-2xl text-[#FF5A5F]">
-                <Medal size={28} />
-              </div>
-              <div>
-                <p className="font-bold text-[#191A19]">Superhost Standards</p>
-                <p className="text-xs text-gray-500">We clean for the 5-star review</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- LIFESTYLE ADVANTAGES --- */}
-      <section className="bg-white py-12 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { label: 'Pet Approved', val: 'Pet Hair Experts', icon: <Dog className="text-orange-400" /> },
-            { label: 'Non-Toxic', val: 'Eco-Friendly', icon: <Leaf className="text-green-500" /> },
-            { label: 'Hospitality', val: 'Superhost Owned', icon: <Medal className="text-[#FF5A5F]" /> },
-            { label: 'Protection', val: '$1M Insured', icon: <Shield className="text-blue-500" /> },
-          ].map((stat, i) => (
-            <div key={i} className="text-center md:text-left flex flex-col md:flex-row items-center gap-3">
-              <div className="bg-gray-50 p-2 rounded-lg">{stat.icon}</div>
-              <div>
-                <p className="text-xl font-bold text-gray-900 leading-none">{stat.val}</p>
-                <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* --- ADD-ONS SECTION --- */}
-      <section id="addons" className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">The "Little Things" Package</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">Add these high-value services to any standard or deep clean for a truly effortless home experience.</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { title: 'Fridge Deep Scrub', price: '$35', icon: <Sparkles size={20} /> },
-              { title: 'Oven Restoration', price: '$45', icon: <Clock size={20} /> },
-              { title: 'Inside Windows', price: '$5/ea', icon: <CheckCircle size={20} /> },
-              { title: 'Cabinet Interiors', price: '$40', icon: <Key size={20} /> },
-              { title: 'Laundry (Fold)', price: '$25/load', icon: <Star size={20} /> },
-              { title: 'Pet Area Sanitizing', price: '$20', icon: <Dog size={20} /> },
-              { title: 'Eco-Deep Steam', price: '$60', icon: <Leaf size={20} /> },
-              { title: 'Coffee Bar Setup', price: '$15', icon: <Coffee size={20} /> },
-            ].map((addon, i) => (
-              <div key={i} className="p-6 bg-gray-50 rounded-3xl border border-gray-100 flex flex-col items-center text-center hover:shadow-lg transition-shadow">
-                <div className="text-[#5F7161] mb-3">{addon.icon}</div>
-                <h4 className="font-bold text-gray-900 text-sm mb-1">{addon.title}</h4>
-                <p className="text-[#6D8B74] font-mono font-bold">{addon.price}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- STR / AIRBNB SECTION --- */}
-      <section id="str" className="py-24 px-6 bg-[#F1F4F1]">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 text-[#5F7161] font-bold uppercase tracking-widest text-sm mb-4">
-                <Key size={18} /> STR Turnovers by a Host
-              </div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">Elite Turnovers for <span className="text-[#6D8B74]">Airbnb & VRBO Hosts</span></h2>
-              <p className="text-gray-600 mb-8 text-lg">
-                I understand the Airbnb platform and the stress of a tight turnover window. I handle the cleaning, staging, and inventory tracking so you can focus on scaling your portfolio.
-              </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                {[
-                  { title: 'Laundry Service', desc: 'Crisp, triple-sheeted linens.', icon: <Clock size={18} /> },
-                  { title: 'Inventory Care', desc: 'Never run out of essentials.', icon: <CheckCircle size={18} /> },
-                  { title: 'Photo Checks', desc: 'Visual proof of every clean.', icon: <Camera size={18} /> },
-                  { title: 'Elite Staging', desc: 'Hospitality-grade presentation.', icon: <Sparkles size={18} /> },
-                ].map((item, i) => (
-                  <div key={i} className="bg-white/50 p-4 rounded-2xl border border-white">
-                    <div className="text-[#5F7161] mb-2">{item.icon}</div>
-                    <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
-                    <p className="text-gray-500 text-xs">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-gray-100">
-                <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-gray-900 font-mono italic text-[#FF5A5F]">Guest-Ready Rates</h3>
-                    <p className="text-gray-400 text-sm">Consistent quality for Superhosts</p>
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5 top-8">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-sage rounded-xl flex items-center justify-center text-white">
+                    <i data-lucide="sparkles"></i>
                 </div>
-                <div className="space-y-4 mb-10">
-                    <div className="flex justify-between items-center p-4 bg-gray-50 rounded-2xl">
-                        <span className="font-medium text-gray-700">Studio / 1BR</span>
-                        <span className="font-bold text-gray-900">From $115</span>
-                    </div>
-                    <div className="flex justify-between items-center p-4 bg-gray-50 rounded-2xl">
-                        <span className="font-medium text-gray-700">2 Bedroom Home</span>
-                        <span className="font-bold text-gray-900">From $155</span>
-                    </div>
-                    <div className="flex justify-between items-center p-4 bg-gray-50 rounded-2xl">
-                        <span className="font-medium text-gray-700">3+ Bedroom Estate</span>
-                        <span className="font-bold text-gray-900">From $215</span>
-                    </div>
-                </div>
-                <button className={`w-full ${COLORS.primary} text-white py-4 rounded-xl font-bold shadow-lg hover:scale-[1.02] transition-transform flex items-center justify-center gap-2`}>
-                    Inquire for Host Support <ChevronRight size={18} />
+                <span class="text-2xl font-bold tracking-tight text-[#191A19]">Grov<span class="text-sage">eyard</span></span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services" class="text-gray-600 hover:text-sage font-medium transition-colors">Services</a>
+                <a href="#str" class="text-gray-600 hover:text-sage font-medium transition-colors">STR Turnover</a>
+                <a href="#rates" class="text-gray-600 hover:text-sage font-medium transition-colors">Rates</a>
+                <button class="bg-sage text-white px-6 py-2.5 rounded-full font-semibold hover:opacity-90 transition-all shadow-lg">
+                    Book Now
                 </button>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* --- CONTACT / BOOKING --- */}
-      <section id="contact" className="py-24 px-6 bg-[#191A19] text-white rounded-t-[4rem]">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
-          <div>
-            <h2 className="text-4xl font-bold mb-6">Let's Clean <br /><span className="text-[#6D8B74]">Your Space.</span></h2>
-            <p className="text-gray-400 mb-12 max-w-sm">Skip the hold times. Text us for an instant callback. We're in Northglenn every Tuesday and Thursday!</p>
+            <button class="md:hidden text-gray-800" onclick="toggleMenu()">
+                <i id="menu-icon" data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-t p-6 flex flex-col gap-4 shadow-xl">
+            <a href="#services" onclick="toggleMenu()" class="text-xl font-medium text-gray-800 border-b pb-2">Services</a>
+            <a href="#str" onclick="toggleMenu()" class="text-xl font-medium text-gray-800 border-b pb-2">STR Turnover</a>
+            <a href="#rates" onclick="toggleMenu()" class="text-xl font-medium text-gray-800 border-b pb-2">Rates</a>
+            <button class="bg-sage text-white py-4 rounded-xl font-bold mt-4">Book a Cleaning</button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-40 pb-20 md:pt-56 md:pb-32 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="z-10 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 bg-sand text-sage px-4 py-1.5 rounded-full text-sm font-bold mb-6">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i> Serving Denver & Northglenn
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-[#191A19] leading-tight mb-6">
+                    Superhost-Level <br />
+                    <span class="text-sage">Clean. Every Time.</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
+                    Owned and operated by a Denver Superhost. We bring hospitality-grade detailing to residential homes, Airbnbs, and pet-friendly spaces across the Front Range.
+                </p>
+                <div class="flex flex-col sm:row gap-4 justify-center md:justify-start">
+                    <button class="bg-sage text-white text-lg px-8 py-4 rounded-2xl font-bold shadow-xl hover:scale-105 transition-transform flex items-center justify-center gap-2">
+                        Get Your Quote <i data-lucide="chevron-right"></i>
+                    </button>
+                    <button class="bg-white border-2 border-gray-200 text-gray-700 text-lg px-8 py-4 rounded-2xl font-bold hover:bg-gray-50">
+                        View Local Rates
+                    </button>
+                </div>
+            </div>
             
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-[#6D8B74]">
-                  <Phone size={24} />
+            <div class="relative">
+                <div class="aspect-[4/5] bg-sage/10 rounded-[3rem] overflow-hidden shadow-2xl relative border-8 border-white">
+                    <img src="NanysImageOne.png" alt="Groveyard Cleaners Professional Cleaning" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden absolute inset-0 items-center justify-center text-sage/30 italic p-12 text-center text-sm">
+                        [Photo: Professional image of your girlfriend with her cleaning kit in a bright Denver living room]
+                    </div>
                 </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">Call or Text</p>
-                  <p className="text-xl font-medium">(303) 000-0000</p>
+                <!-- Superhost Badge -->
+                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-2xl border border-gray-50 flex items-center gap-4 max-w-xs animate-bounce-slow">
+                    <div class="bg-red-50 p-3 rounded-2xl text-[#FF5A5F]">
+                        <i data-lucide="medal" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold text-[#191A19]">Superhost Status</p>
+                        <p class="text-xs text-gray-500">We know exactly what guests expect</p>
+                    </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-[#6D8B74]">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest font-bold">Main Service Loop</p>
-                  <p className="text-xl font-medium">Northglenn, Denver, Thornton</p>
-                </div>
-              </div>
             </div>
+        </div>
+    </section>
 
-            <div className="mt-12 flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#6D8B74] transition-colors cursor-pointer">
-                <Instagram size={20} />
-              </div>
-              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#6D8B74] transition-colors cursor-pointer">
-                <Facebook size={20} />
-              </div>
+    <!-- TRUST STRIP -->
+    <section class="bg-white py-12 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="flex items-center gap-3">
+                <i data-lucide="dog" class="text-orange-400"></i>
+                <div><p class="font-bold">Pet Friendly</p><p class="text-xs text-gray-500">Hair removal experts</p></div>
             </div>
-          </div>
-
-          <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl">
-            <form className="space-y-6 text-gray-900">
-              <div className="grid grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Your Name</label>
-                  <input type="text" className="w-full bg-gray-50 border-none rounded-xl p-4 text-gray-900 focus:ring-2 ring-[#5F7161]" placeholder="Jane D." />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Phone</label>
-                  <input type="text" className="w-full bg-gray-50 border-none rounded-xl p-4 text-gray-900 focus:ring-2 ring-[#5F7161]" placeholder="(303) 000-0000" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Neighborhood / Property</label>
-                <input type="text" className="w-full bg-gray-50 border-none rounded-xl p-4 text-gray-900 focus:ring-2 ring-[#5F7161]" placeholder="e.g. Northglenn Airbnb" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Service Needed</label>
-                <select className="w-full bg-gray-50 border-none rounded-xl p-4 text-gray-900 focus:ring-2 ring-[#5F7161]">
-                  <option>Airbnb / STR Turnover</option>
-                  <option>Standard Maintenance Clean</option>
-                  <option>First Time Deep Clean</option>
-                  <option>Move Out / Move In</option>
-                </select>
-              </div>
-              <button className={`w-full ${COLORS.primary} text-white py-5 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all mt-4`}>
-                Get My Free Estimate
-              </button>
-            </form>
-          </div>
+            <div class="flex items-center gap-3">
+                <i data-lucide="leaf" class="text-green-500"></i>
+                <div><p class="font-bold">Non-Toxic</p><p class="text-xs text-gray-500">Safe for kids & pets</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+                <i data-lucide="shield" class="text-blue-500"></i>
+                <div><p class="font-bold">$1M Insured</p><p class="text-xs text-gray-500">Bonded & Protected</p></div>
+            </div>
+            <div class="flex items-center gap-3">
+                <i data-lucide="award" class="text-purple-500"></i>
+                <div><p class="font-bold">100% Guarantee</p><p class="text-xs text-gray-500">Satisfaction or re-clean</p></div>
+            </div>
         </div>
+    </section>
 
-        <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
-          <p>© 2026 Sparkle Mile High Cleaning LLC. Serving CO since Day 1.</p>
-          <div className="flex gap-8">
-            <a href="#" className="hover:text-white">Privacy</a>
-            <a href="#" className="hover:text-white">Terms</a>
-          </div>
+    <!-- STR TURNOVER SECTION -->
+    <section id="str" class="py-24 px-6 bg-[#F1F4F1]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-tight">Short-Term Rental <br><span class="text-sage">Turnover Specialists</span></h2>
+                    <p class="text-gray-600 mb-8 text-lg">
+                        As a Superhost, I understand that cleanliness is the #1 driver of your occupancy and nightly rate. We treat your property like our own business.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3 items-center"><i data-lucide="check-circle" class="text-green-500 w-5"></i> <strong>Damage Photo Proof:</strong> Photos sent after every clean.</li>
+                        <li class="flex gap-3 items-center"><i data-lucide="check-circle" class="text-green-500 w-5"></i> <strong>Inventory Tracking:</strong> We notify you when supplies are low.</li>
+                        <li class="flex gap-3 items-center"><i data-lucide="check-circle" class="text-green-500 w-5"></i> <strong>Guest-Ready Staging:</strong> Triple-sheeted beds and towels.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-[3rem] shadow-xl border border-gray-100">
+                    <h3 class="text-2xl font-bold text-center mb-8 italic text-[#FF5A5F]">Hosting-Grade Rates</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between p-4 bg-gray-50 rounded-2xl"><span>Studio / 1BR</span><strong>$115</strong></div>
+                        <div class="flex justify-between p-4 bg-gray-50 rounded-2xl"><span>2 Bedroom</span><strong>$155</strong></div>
+                        <div class="flex justify-between p-4 bg-gray-50 rounded-2xl"><span>3+ Bedroom</span><strong>From $215</strong></div>
+                    </div>
+                    <button class="w-full mt-8 bg-sage text-white py-4 rounded-xl font-bold shadow-lg hover:scale-[1.02] transition-transform">
+                        Inquire for Host Support
+                    </button>
+                </div>
+            </div>
         </div>
-      </section>
-    </div>
-  );
-};
+    </section>
 
-export default App;
+    <!-- RESIDENTIAL SERVICES -->
+    <section id="services" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900">Residential Cleaning</h2>
+            <p class="text-gray-500 mt-4">The same Superhost-quality detail, now for your private home.</p>
+        </div>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+            <!-- Standard -->
+            <div class="p-8 rounded-[2rem] border border-gray-100 bg-gray-50 hover:bg-white hover:shadow-xl transition-all">
+                <h3 class="text-2xl font-bold mb-2">Standard Clean</h3>
+                <p class="text-sage text-xs font-bold uppercase mb-4 tracking-wider">Starting at $99</p>
+                <ul class="space-y-3 mb-8 text-sm text-gray-600">
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4"></i> Vacuuming & Mopping</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4"></i> Sanitizing Bathrooms</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4"></i> Kitchen Countertops</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4"></i> Dusting Surfaces</li>
+                </ul>
+                <button class="w-full py-3 bg-gray-200 text-gray-800 rounded-xl font-bold hover:bg-gray-300">Book Standard</button>
+            </div>
+            <!-- Deep -->
+            <div class="p-8 rounded-[2rem] border-2 border-sage bg-white shadow-2xl scale-105 z-10">
+                <div class="bg-sage text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest inline-block mb-4">Most Requested</div>
+                <h3 class="text-2xl font-bold mb-2">Deep Cleaning</h3>
+                <p class="text-sage text-xs font-bold uppercase mb-4 tracking-wider">Starting at $149</p>
+                <ul class="space-y-3 mb-8 text-sm text-gray-600">
+                    <li class="flex gap-2 font-semibold text-sage"><i data-lucide="star" class="w-4"></i> Everything in Standard</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4"></i> Baseboards Hand-Wiped</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4"></i> Inside Microwave</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4"></i> Ceiling Fans & Vents</li>
+                </ul>
+                <button class="w-full py-3 bg-sage text-white rounded-xl font-bold hover:opacity-90">Book Deep Clean</button>
+            </div>
+            <!-- Move In/Out -->
+            <div class="p-8 rounded-[2rem] border border-gray-100 bg-gray-50 hover:bg-white hover:shadow-xl transition-all">
+                <h3 class="text-2xl font-bold mb-2">Move In/Out</h3>
+                <p class="text-sage text-xs font-bold uppercase mb-4 tracking-wider">Starting at $275</p>
+                <ul class="space-y-3 mb-8 text-sm text-gray-600">
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4"></i> Inside Cabinets</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4"></i> Oven & Fridge Interior</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4"></i> Window Tracks</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4"></i> Closet Detailing</li>
+                </ul>
+                <button class="w-full py-3 bg-gray-200 text-gray-800 rounded-xl font-bold hover:bg-gray-300">Book Move-Out</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / CONTACT -->
+    <section id="contact" class="bg-[#191A19] text-white py-24 px-6 rounded-t-[4rem]">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
+            <div>
+                <h2 class="text-4xl font-bold mb-6 italic text-sage">Groveyard Cleaners</h2>
+                <p class="text-gray-400 mb-8">Bringing your space back to life with Superhost standards. We specialize in Northglenn and the Denver Metro Area.</p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4"><i data-lucide="phone" class="text-sage"></i> <span>(303) 000-0000</span></div>
+                    <div class="flex items-center gap-4"><i data-lucide="map-pin" class="text-sage"></i> <span>Northglenn, CO</span></div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-[2rem] text-gray-900">
+                <form class="space-y-4">
+                    <input type="text" placeholder="Your Name" class="w-full p-4 bg-gray-100 rounded-xl outline-none focus:ring-2 ring-sage border-none">
+                    <input type="text" placeholder="Neighborhood" class="w-full p-4 bg-gray-100 rounded-xl outline-none focus:ring-2 ring-sage border-none">
+                    <select class="w-full p-4 bg-gray-100 rounded-xl outline-none focus:ring-2 ring-sage border-none">
+                        <option>Airbnb Turnover</option>
+                        <option>Residential Deep Clean</option>
+                        <option>Standard Clean</option>
+                    </select>
+                    <button class="w-full bg-sage text-white py-4 rounded-xl font-bold text-lg shadow-xl hover:opacity-90">Get Free Estimate</button>
+                </form>
+            </div>
+        </div>
+        <p class="text-center text-gray-600 mt-20 text-sm">© 2026 Groveyard Cleaners LLC. Fully Bonded & Insured in Colorado.</p>
+    </section>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.onscroll = function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white', 'shadow-md', 'py-3');
+                nav.classList.remove('py-5');
+                nav.style.top = '0';
+            } else {
+                nav.classList.remove('bg-white', 'shadow-md', 'py-3');
+                nav.classList.add('py-5');
+                nav.style.top = window.innerWidth > 768 ? '32px' : '36px';
+            }
+        };
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            const isHidden = menu.classList.contains('hidden');
+            icon.setAttribute('data-lucide', isHidden ? 'menu' : 'x');
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
